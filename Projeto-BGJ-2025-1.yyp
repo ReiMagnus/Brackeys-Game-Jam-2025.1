@@ -51,6 +51,7 @@
     {"id":{"name":"spr_drone_basico1","path":"sprites/spr_drone_basico1/spr_drone_basico1.yy",},},
     {"id":{"name":"spr_drone_metralhadora","path":"sprites/spr_drone_metralhadora/spr_drone_metralhadora.yy",},},
     {"id":{"name":"spr_drone","path":"sprites/spr_drone/spr_drone.yy",},},
+    {"id":{"name":"spr_map","path":"sprites/spr_map/spr_map.yy",},},
     {"id":{"name":"spr_veiculo","path":"sprites/spr_veiculo/spr_veiculo.yy",},},
     {"id":{"name":"spr_veiculo0","path":"sprites/spr_veiculo0/spr_veiculo0.yy",},},
     {"id":{"name":"spr_veiculo1","path":"sprites/spr_veiculo1/spr_veiculo1.yy",},},
