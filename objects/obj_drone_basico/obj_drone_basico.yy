@@ -6,8 +6,8 @@
   "name":"obj_drone_basico",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Drones",
+    "path":"folders/Objects/Drones.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_drone_basico0",
-    "path":"sprites/spr_drone_basico0/spr_drone_basico0.yy",
+    "name":"spr_drone_basico",
+    "path":"sprites/spr_drone_basico/spr_drone_basico.yy",
   },
   "spriteMaskId":null,
   "visible":true,

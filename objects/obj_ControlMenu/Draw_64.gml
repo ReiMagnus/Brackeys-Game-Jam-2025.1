@@ -148,7 +148,7 @@ switch(menu_atual) {
         // Desenhando as armas
         for(var i = 0; i < 2; i++) {
             
-            var _armas = [spr_arma_base, spr_arma_pistola, spr_arma_metralhadora, spr_arma_pulse, spr_arma_serra];
+            var _armas = [spr_arma_base_menu, spr_arma_pistola_menu, spr_arma_metralhadora_menu, spr_arma_pulse_menu, spr_arma_serra_menu];
             var _arma;
             
              yy = (_hgui/8)*5.8 - (101 * global.escala_janela); // xx e yy feito para apenas um tipo de veiculo, mudar isso para uma versão futura

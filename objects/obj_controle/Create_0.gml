@@ -11,17 +11,20 @@ background_map[? layer_get_id("Background_2")] = -0.8;
 background_map[? layer_get_id("Background_3")] = -0.3;
 background_map[? layer_get_id("Background_4")] = -0.2;
 
-global.ds_veiculo_vida = ds_grid_create(3,2)
+global.veiculo_vida = [ // [vida atual, vida max]
+	[20, 50], // atras
+	[20, 50], // meio
+	[20, 50]  // frente
+];
 
-// 0 - atras / 1 - meio / 2 - frente
+global.veiculo_armas = [ // [tipo de arma, status, timer]
+	[2, false, 0], 
+	[1, false, 0],
+];
 
-ds_grid_add(global.ds_veiculo_vida,0,0,20) // vida atual
-ds_grid_add(global.ds_veiculo_vida,0,1,50) // vida max
-
-ds_grid_add(global.ds_veiculo_vida,1,0,50)
-ds_grid_add(global.ds_veiculo_vida,1,1,50)
-
-ds_grid_add(global.ds_veiculo_vida,2,0,30)
-ds_grid_add(global.ds_veiculo_vida,2,1,50)
-
-// ainda é preciso colocar os efeitos se a vida ficar 0
+// status se esta atirando ou n
+global.info_armas = [ 
+	game_get_speed(gamespeed_fps)*0.2, 
+	game_get_speed(gamespeed_fps)*0.1,
+	game_get_speed(gamespeed_fps)*3 
+];
