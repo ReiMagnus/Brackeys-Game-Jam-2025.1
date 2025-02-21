@@ -52,7 +52,9 @@ global.info_estatisticas = {
 }
 
 global.info_init_fase = {
-    
+    inimigos   : [20, 20, 20, 20, 20],
+    temp_spawn : [0, 60], // [tempo_atual, tempo_padrap]
+    temp_fase  : 0  // contagem por frames | 3600 = 1 minuto
 }
 
 // Depois, mudar TODOS os textos para ingles
@@ -71,3 +73,50 @@ texto_estatisticas = string(
     global.info_estatisticas.tempo, global.info_estatisticas.dinhe, global.info_estatisticas.jogos, global.info_estatisticas.inimi
 );
 
+#region Métodos para salvar e carregar jogo | Sara Spalding
+
+
+function save_game() {
+    
+    //Maker save array
+    var _saveData = array_create(0);
+    
+    // Informações para serem salvas no computador
+    array_push(_saveData, global.dinheiro);
+    array_push(_saveData, info_fases);
+    array_push(_saveData, info_itens);
+    array_push(_saveData, global.info_veiculo);
+    array_push(_saveData, global.info_estatisticas);
+    
+    //turn all this data into a JSON string and save it via a buffer
+    var _string = json_stringify(_saveData);
+    var _buffer = buffer_create(string_byte_length(_string) +1, buffer_fixed, 1);
+    buffer_write(_buffer, buffer_string, _string);
+    buffer_save(_buffer, "savegame.save");
+    buffer_delete(_buffer);
+    
+    show_debug_message("Game save!" + _string);
+    
+}
+
+function load_game() {
+    
+    if(file_exists("savegame.save")) {
+        
+        var _buffer = buffer_load("savegame.save");
+        var _string = buffer_read(_buffer, buffer_string);
+        buffer_delete(_buffer);
+        
+        var _loadData = json_parse(_string);
+        
+        global.dinheiro          = _loadData[0];
+        info_fases               = _loadData[1];
+        info_itens               = _loadData[2];
+        global.info_veiculo      = _loadData[3];
+        global.info_estatisticas = _loadData[4];
+        
+        show_debug_message("Game loaded! " + _string);
+    }
+    
+}
+#endregion

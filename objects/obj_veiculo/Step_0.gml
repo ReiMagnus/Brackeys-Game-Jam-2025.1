@@ -1,6 +1,5 @@
 
 // MOVIMENTAÇÃO
-
 if (movement = 0){ // pra traz
 	qtd--;
 	qtd = clamp(qtd,-2,aceleracao_max)
@@ -19,17 +18,21 @@ else { movement = 0 }
 x = clamp(x,0,room_width-sprite_width) // limita movimento
 
 
-// DEBUFFS DA VIDA
+// Limitando a vida para 0
+global.veiculo_vida[0][0] = max(global.veiculo_vida[0][0], 0);
+global.veiculo_vida[1][0] = max(global.veiculo_vida[1][0], 0);
+global.veiculo_vida[2][0] = max(global.veiculo_vida[2][0], 0);
 
-if (global.veiculo_vida[0][0] == 0){ 
+// DEBUFFS DA VIDA
+if (global.veiculo_vida[0][0] <= 0){ 
 	// aumenta tempo da fase
 }
 
-if (global.veiculo_vida[1][0] == 0){ 
+if (global.veiculo_vida[1][0] <= 0){ 
 	// mostra carga
 }
 
-if (global.veiculo_vida[2][0] == 0){
+if (global.veiculo_vida[2][0] <= 0){
 	// piora aceleração
 	aceleracao_max = 2
 }

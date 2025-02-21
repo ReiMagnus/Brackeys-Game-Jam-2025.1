@@ -114,7 +114,7 @@ switch(menu_atual) {
                 if(mouse_check_button_released(mb_left)) { 
                     switch (i) {
                         case 0 : menu_atual = abas_menu.main; break; // VOLTAR
-                        case 1 : show_message("JOGAR") break; // Metodo para enviar para a fase com os parametros certos ---------------------------------------------------
+                        case 1 : room_goto(Room1) // Metodo para enviar para a fase com os parametros certos /// Coloquei para enviar para room1 para testar
                     }
                 } 
             }
@@ -227,7 +227,7 @@ switch(menu_atual) {
         x2 = xx + _wstr;
         y2 = yy;
         
-        if(point_in_rectangle(_mx, _my, x1, y1, x2, y2)) { if(mouse_check_button_released(mb_left)) {menu_atual = abas_menu.main; selecao = pointer_null;} }
+        if(point_in_rectangle(_mx, _my, x1, y1, x2, y2)) { if(mouse_check_button_released(mb_left)) {menu_atual = abas_menu.main; selecao = pointer_null; save_game();} }
         
         // draw_rectangle(x1, y1, x2, y2, 1); // desenhando a colisao do botao
         draw_text_transformed(xx, yy, "VOLTAR", global.escala_janela, global.escala_janela, 0);

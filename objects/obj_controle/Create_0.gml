@@ -1,6 +1,25 @@
+randomize()
+
+// Paramentros da fase ------------
+inimigos   = global.info_init_fase.inimigos;
+temp_spawn = global.info_init_fase.temp_spawn;
+temp_fase  = global.info_init_fase.temp_fase;
+
+
+combate = true; // ligar/desligar o spawn dos drones
+spawn_drones = pth_SpawnDrones;
+
+// Menu Pause ---------
+pause = false;
+pauseSurf = -1;
+pauseSurfBuffer = -1;
+
+resW = 640* global.escala_janela;
+resH = 360* global.escala_janela
 
 // resize janela
-window_set_size(1280,720)
+// window_set_size(1280,720) // acho que essa parte não precisa mais
+window_center();
 
 // parallax
 // vel de cada parte

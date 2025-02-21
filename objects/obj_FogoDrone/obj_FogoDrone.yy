@@ -1,11 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_bala_arma",
+  "%Name":"obj_FogoDrone",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_veiculo","path":"objects/obj_veiculo/obj_veiculo.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_bala_arma",
+  "name":"obj_FogoDrone",
   "overriddenProperties":[],
   "parent":{
     "name":"Balas",
@@ -30,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_bala_arma",
-    "path":"sprites/spr_bala_arma/spr_bala_arma.yy",
+    "name":"spr_FogoDrone",
+    "path":"sprites/spr_FogoDrone/spr_FogoDrone.yy",
   },
   "spriteMaskId":null,
   "visible":true,

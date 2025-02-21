@@ -1,0 +1,20 @@
+{
+  "$GMPath":"",
+  "%Name":"pth_SpawnDrones",
+  "closed":false,
+  "kind":0,
+  "name":"pth_SpawnDrones",
+  "parent":{
+    "name":"Paths",
+    "path":"folders/Paths.yy",
+  },
+  "points":[
+    {"speed":100.0,"x":-40.0,"y":90.0,},
+    {"speed":100.0,"x":-40.0,"y":-40.0,},
+    {"speed":100.0,"x":680.0,"y":-40.0,},
+    {"speed":100.0,"x":680.0,"y":90.0,},
+  ],
+  "precision":4,
+  "resourceType":"GMPath",
+  "resourceVersion":"2.0",
+}

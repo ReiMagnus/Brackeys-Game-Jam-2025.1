@@ -8,8 +8,8 @@
   "name":"obj_bala_pulse",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Balas",
+    "path":"folders/Objects/Balas.yy",
   },
   "parentObjectId":null,
   "persistent":false,

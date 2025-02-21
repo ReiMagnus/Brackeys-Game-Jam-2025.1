@@ -11,13 +11,13 @@ for (var i = 0; i < 3; i ++){
 
 // partes do carro
 
-if (global.veiculo_vida[0][0] != 0) { draw_sprite(spr_veiculo1,0,x,y) }
+if (global.veiculo_vida[0][0] > 0) { draw_sprite(spr_veiculo1,0,x,y) }
 else { draw_sprite(spr_veiculo1,1,x,y) }
 
-if (global.veiculo_vida[1][0] != 0) { draw_sprite(spr_veiculo2,0,x,y) }
+if (global.veiculo_vida[1][0] > 0) { draw_sprite(spr_veiculo2,0,x,y) }
 else { draw_sprite(spr_veiculo2,1,x,y) }
 
-if (global.veiculo_vida[2][0] != 0) { draw_sprite(spr_veiculo3,0,x,y) }
+if (global.veiculo_vida[2][0] > 0) { draw_sprite(spr_veiculo3,0,x,y) }
 else { draw_sprite(spr_veiculo3,1,x,y) }
 
 draw_self() // desenha a parte de baixo
