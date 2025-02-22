@@ -214,6 +214,8 @@ switch(menu_atual) {
         // Equipamento ---
         yy = (_hgui/8)*7;
         
+		draw_sprite_ext(spr_equips, global.info_veiculo.equip, xx-64, yy-16, global.escala_janela, global.escala_janela, 0, c_white, 1);
+		
         draw_text_transformed(xx, yy, botoes_veiculo[3][global.info_veiculo.equip], global.escala_janela, global.escala_janela, 0);
         
         // Desenhando as armas
@@ -501,10 +503,13 @@ switch(menu_atual) {
             }
             
             // Draws temporarios
-            if(i == 0) {draw_text(xx-25, yy, string("Musica: {0}", global.musica));} else
-            if(i == 1) {draw_text(xx-25, yy, string("Sons: {0}", global.sons));}
+            //if(i == 0) {draw_text(xx-25, yy, string("Musica: {0}", global.musica));} else
+            //if(i == 1) {draw_text(xx-25, yy, string("Sons: {0}", global.sons));}
             
-            draw_rectangle(x1, y1, x2, y2, 1);
+			if (i == 0) {draw_sprite_ext(spr_icons, 4+sign(global.musica), x1, y1, global.escala_janela*2, global.escala_janela*2, 0, c_white, 1)}
+            if (i == 1) {draw_sprite_ext(spr_icons, 6+sign(global.sons), x1, y1, global.escala_janela*2, global.escala_janela*2, 0, c_white, 1)}
+			
+            //draw_rectangle(x1, y1, x2, y2, 1);
         }
         
         #region Estatisticas 

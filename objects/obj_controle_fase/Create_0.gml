@@ -51,10 +51,10 @@ global.info_armas = [
 
 // VAN
 if global.info_veiculo.tipo = 0{
-	global.veiculo_vida = [ // [vida atual, vida max]
-		[50, 50], // atras
-		[50, 50], // meio
-		[50, 50]  // frente
+	global.veiculo_vida = [ // [vida atual, vida max, sinalização de dano]
+		[50, 50, false], // atras
+		[50, 50, false], // meio
+		[50, 50, false]  // frente
 	];
 
 	global.veiculo_armas = [ // [tipo de arma, status, timer]

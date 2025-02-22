@@ -10,16 +10,33 @@ if (room = rm_Fase){
 	}
 
 	// partes do carro
+	
+	if (!global.veiculo_vida[0][2]){
+		if (global.veiculo_vida[0][0] > 0) { draw_sprite(spr_veiculo1,0,x,y) }
+		else { draw_sprite(spr_veiculo1,1,x,y) }
+	}
+	else if (global.veiculo_vida[0][2]){
+		if (global.veiculo_vida[0][0] > 0) { draw_sprite_ext(spr_veiculo1,0,x,y,1,1,0,c_red,1) }
+		else { draw_sprite_ext(spr_veiculo1,1,x,y,1,1,0,c_red,1) }
+	}
 
-	if (global.veiculo_vida[0][0] > 0) { draw_sprite(spr_veiculo1,0,x,y) }
-	else { draw_sprite(spr_veiculo1,1,x,y) }
+	if (!global.veiculo_vida[1][2]){
+		if (global.veiculo_vida[1][0] > 0) { draw_sprite(spr_veiculo2,0,x,y) }
+		else { draw_sprite(spr_veiculo2,1,x,y) }
+	}
+	else if (global.veiculo_vida[1][2]){
+		if (global.veiculo_vida[1][0] > 0) { draw_sprite_ext(spr_veiculo2,0,x,y,1,1,0,c_red,1) }
+		else { draw_sprite_ext(spr_veiculo2,1,x,y,1,1,0,c_red,1) }
+	}
 
-	if (global.veiculo_vida[1][0] > 0) { draw_sprite(spr_veiculo2,0,x,y) }
-	else { draw_sprite(spr_veiculo2,1,x,y) }
-
-	if (global.veiculo_vida[2][0] > 0) { draw_sprite(spr_veiculo3,0,x,y) }
-	else { draw_sprite(spr_veiculo3,1,x,y) }
-
+	if (!global.veiculo_vida[2][2]){
+		if (global.veiculo_vida[2][0] > 0) { draw_sprite(spr_veiculo3,0,x,y) }
+		else { draw_sprite(spr_veiculo3,1,x,y) }
+	}
+	else if (global.veiculo_vida[2][2]){
+		if (global.veiculo_vida[2][0] > 0) { draw_sprite_ext(spr_veiculo3,0,x,y,1,1,0,c_red,1) }
+		else { draw_sprite_ext(spr_veiculo3,1,x,y,1,1,0,c_red,1) }
+	}
 	draw_self() // desenha a parte de baixo
 
 	// atras

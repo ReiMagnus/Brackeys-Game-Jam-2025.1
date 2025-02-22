@@ -55,10 +55,12 @@ if(!pause) {
 	if (mouse_check_button_released(mb_right)){
 		switch (veiculo_equip){
 			case 0:
+			play_sfx(sfx_equip_generico);
 			with (obj_DroneBase) { instance_destroy() }
 			break;
 			
 			case 1:
+			play_sfx(sfx_equip_generico);
 			var menor_v = 0
 			for (var i = 0; i < 3; i++){
 				if (global.veiculo_vida[i][0] < global.veiculo_vida[menor_v][0]){
@@ -70,11 +72,11 @@ if(!pause) {
 			break;
 			
 			case 2:
+			play_sfx(sfx_equip_generico);
 			dano_buff = 2
 			alarm[0] = game_get_speed(gamespeed_fps)*30 // 30seg
 			break;
 		}
-        play_sfx(sfx_equip_generico);
 		veiculo_equip = -1
 	}
 	

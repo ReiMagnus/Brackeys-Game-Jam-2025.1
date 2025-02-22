@@ -7,7 +7,11 @@ if (image_alpha == 1){
 
 	if _num > 0{
 	    for (var i = 0; i < _num; ++i;){
+			var _inst = _list[| i]
+
 	        _list[| i].life -= dano*obj_controle_fase.dano_buff
+			_inst.image_blend = c_red
+			_inst.alarm[1] = game_get_speed(gamespeed_fps)*0.1
 	    }
 	}
 	

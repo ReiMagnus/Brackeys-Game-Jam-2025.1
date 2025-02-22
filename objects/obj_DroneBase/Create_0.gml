@@ -1,3 +1,5 @@
+image_speed = 0
+
 //
 tipo  = 0; // melee: 0, 1, 2 | ranged: 3, 4
 spd   = 0;
@@ -10,6 +12,8 @@ recar = [0, 0]; // tempo em frames
 atirar = false; // Modo para drones ranged
 hsp = 0;
 vsp = 0;
+
+stop_move = false
 
 // Ajustei no local de ataca dos drones para diferencias
 mirax = irandom_range(-sprite_get_width(spr_veiculo)*0.4, sprite_get_width(spr_veiculo)*0.4);

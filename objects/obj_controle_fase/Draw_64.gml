@@ -21,6 +21,11 @@ if (room = rm_Fase){
 			draw_set_halign(-1);
 			draw_set_valign(-1);
 			draw_set_font(-1);
+			
+			draw_set_halign(fa_left);
+			draw_set_valign(fa_top);
+			
+			if (veiculo_equip != -1){ draw_sprite_ext(spr_equips_outlined, veiculo_equip, _wgui-32, _hgui-32, 1, 1, 0, c_white, 1) }
 		}
 	}
 	else{
@@ -69,13 +74,16 @@ if (room = rm_Fase){
 				draw_text_color(_wgui/2-42+38,_hgui/2-48+14+(34*i), "Total: " + string(din), c_white,  c_white,  c_white,  c_white, 1)
 			}
 		}
-		draw_set_color(c_black)
-		draw_rectangle(_wgui/2-64,_hgui/2+80,_wgui/2+64,_hgui/2+110,false)
-		draw_set_color(c_white)
-		draw_rectangle(_wgui/2-64,_hgui/2+80,_wgui/2+64,_hgui/2+110,true)
 		
+		var menu_width = sprite_get_width(spr_menu)
+		var menu_height = sprite_get_height(spr_menu)
+		
+		draw_set_halign(fa_left);
+		draw_set_valign(fa_top);
+		draw_sprite_ext(spr_menu, 0, _wgui/2-(menu_width/2),_hgui/2+70, 1, 1, 0, c_white, 1)
+	
 		// botão menu
-		if(point_in_rectangle(_mx, _my, _wgui/2-64,_hgui/2+80,_wgui/2+64,_hgui/2+110)){
+		if(point_in_rectangle(_mx, _my, _wgui/2-(menu_width/2), _hgui/2+70,_wgui/2-(menu_width/2)+menu_width, _hgui/2+70+menu_height)){
 			if(mouse_check_button_released(mb_left)){
 				global.info_estatisticas.tempo += temp_fase_total
 				global.info_estatisticas.dinhe += global.dinhe_total
@@ -90,11 +98,13 @@ if (room = rm_Fase){
 		
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_top);
-		draw_text(_wgui/2,_hgui/2+83, "MENU")
+		draw_set_color($95BF91)
+		draw_text(_wgui/2,_hgui/2+80, "MENU")
 		
 		draw_set_halign(-1);
 		draw_set_valign(-1);
 		draw_set_font(-1);
+		draw_set_color(c_white)
 	}
 }
 
@@ -134,11 +144,15 @@ if(pause && temp_fase != 0 && !gameOver) { // HUD com o jogo pausado
         }
         
         // Draws temporarios
-        if(i == 0) {draw_text(xx-25, yy, string("Musica: {0}", global.musica));} else
-        if(i == 1) {draw_text(xx-25, yy, string("Sons: {0}", global.sons));}
-        if(i == 2) {draw_text(xx-25, yy, "Menu");}
+		if (i == 0) {draw_sprite_ext(spr_icons, 4+sign(global.musica), x1, y1, global.escala_janela*2, global.escala_janela*2, 0, c_white, 1)}
+        if (i == 1) {draw_sprite_ext(spr_icons, 6+sign(global.sons), x1, y1, global.escala_janela*2, global.escala_janela*2, 0, c_white, 1)}
+		if (i == 2) {draw_sprite_ext(spr_icons, 0, x1, y1, global.escala_janela*2, global.escala_janela*2, 0, c_white, 1)}
+		
+        //if(i == 0) {draw_text(xx-25, yy, string("Musica: {0}", global.musica));} else
+        //if(i == 1) {draw_text(xx-25, yy, string("Sons: {0}", global.sons));}
+        //if(i == 2) {draw_text(xx-25, yy, "Menu");}
         
-        draw_rectangle(x1, y1, x2, y2, 1);
+        //draw_rectangle(x1, y1, x2, y2, 1);
     }
 }
 
@@ -151,16 +165,23 @@ if (gameOver == 1){
 	
 	draw_text_transformed(_wgui/2, _hgui/2, "GAME OVER", global.escala_janela, global.escala_janela, 0)
 	
-	draw_set_color(c_black)
-	draw_rectangle(_wgui/2-64,_hgui/2+80,_wgui/2+64,_hgui/2+110,false)
-	draw_set_color(c_white)
-	draw_rectangle(_wgui/2-64,_hgui/2+80,_wgui/2+64,_hgui/2+110,true)
+	
+	var menu_width = sprite_get_width(spr_menu)
+	var menu_height = sprite_get_height(spr_menu)
 		
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+	draw_sprite_ext(spr_menu, 1, _wgui/2-(menu_width/2),_hgui/2+35, 1, 1, 0, c_white, 1)
+	
 	// botão menu
-	if(point_in_rectangle(_mx, _my, _wgui/2-64,_hgui/2+80,_wgui/2+64,_hgui/2+110)){
+	if(point_in_rectangle(_mx, _my, _wgui/2-(menu_width/2), _hgui/2+35,_wgui/2-(menu_width/2)+menu_width, _hgui/2+35+menu_height)){
 		if(mouse_check_button_released(mb_left)){
 			global.info_estatisticas.tempo += temp_fase_total
+			global.info_estatisticas.dinhe += global.dinhe_total
 			global.info_estatisticas.inimi += global.inimigo_total
+			global.info_estatisticas.jogos++;
+				
+			global.dinheiro += global.dinhe_total
 				
 			room_goto(rm_Menu)
 		}
@@ -168,6 +189,12 @@ if (gameOver == 1){
 		
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);
-	draw_text(_wgui/2,_hgui/2+83, "MENU")
+	draw_set_color(c_white)
+	draw_text(_wgui/2,_hgui/2+45, "MENU")
+		
+		draw_set_halign(-1);
+		draw_set_valign(-1);
+		draw_set_font(-1);
+		draw_set_color(c_white)	
 		
 }

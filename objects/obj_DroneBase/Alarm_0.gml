@@ -27,7 +27,7 @@ switch(tipo) {
     case 3 : 
         spd = 1; 
         life = 20; 
-        range = 300; 
+        range = 250; 
         dano = 1; 
         recar = [0, 20];
         sprite_index = spr_drone_arma; 
@@ -35,7 +35,7 @@ switch(tipo) {
     case 4 : 
         spd = 1; 
         life = 20; 
-        range = 250; 
+        range = 200; 
         dano = 1; 
         recar = [0, 180];
         sprite_index = spr_drone_lancachama; 

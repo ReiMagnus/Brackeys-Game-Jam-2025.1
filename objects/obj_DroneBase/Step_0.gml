@@ -37,7 +37,9 @@ if(point_distance(x, y, _alvox, _alvoy) > range) {
     vsp = lengthdir_y(spd, _dir_veiculo);
     atirar = false;
     
-    if(y >= 90 and tipo >= 3) {vsp = 0;}
+    if(y >= 90 and tipo == 3) {vsp = 0;}
+	
+	if(y >= 180 and tipo == 3) {vsp = 0;}
 } else {
     hsp = 0;
     vsp = 0;
@@ -48,28 +50,67 @@ image_xscale = x >= _alvox ? 1 : -1; //Direcao do olhar do drone
 
 // Forma de atacar 
 if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser melhor para oque eu quero fazer
-    
     var _dist = point_distance(x, y, _alvox, _alvoy) < 10;
+
+	var _dist_tooclose = point_distance(x, y, _alvox, _alvoy) < 15;
+	var _dist_realclose = point_distance(x, y, _alvox, _alvoy) < 20;
+	var _dist_close = point_distance(x, y, _alvox, _alvoy) < 70;
+	var _dist_mid = point_distance(x, y, _alvox, _alvoy) < 140;
+	
     if(_dist) {
         if(tipo == 2) { 
+			image_speed = 1
             if(recar[0] <= 0) {
                 hsp = 0;
                 vsp = 0;
                 
-                play_sfx(sfx_drone_espinho);
+				play_sfx(sfx_drone_espinho);
                 var _parte = clamp(floor((x-obj_veiculo.x)/80), 0, 2)
                 global.veiculo_vida[_parte][0] -= dano;
+				global.veiculo_vida[_parte][2] = true
+				obj_veiculo.alarm[_parte] = game_get_speed(gamespeed_fps)*0.1
                 recar[0] = recar[1];
             } else {recar[0]--;}
         } else {
-            var _parte = clamp(floor((x-obj_veiculo.x)/80), 0, 2)
-            global.veiculo_vida[_parte][0] -= dano;
-            instance_destroy();
+			var _parte = clamp(floor((x-obj_veiculo.x)/80), 0, 2)
+			global.veiculo_vida[_parte][0] -= dano;
+			global.veiculo_vida[_parte][2] = true
+			obj_veiculo.alarm[_parte] = game_get_speed(gamespeed_fps)*0.1
+			instance_destroy()
         }
     }
+	else{
+		if(tipo == 2) { 
+			image_speed = 0	
+		}
+	}
+	
+	if(tipo == 0) { 
+		if (_dist_mid){
+			image_index = 1		
+			if (_dist_close){
+				image_index = 2
+				if (_dist_realclose){
+					image_index = 3
+					image_blend = c_white
+					if (_dist_tooclose){
+						image_blend = c_orange
+					}
+				}
+			}
+		}
+	}
+	else if (tipo == 1){
+		if (_dist_realclose){
+			image_blend = c_orange
+		}
+	}
+	
+	
 } else { // Drones ranged
     
     if(atirar) {
+		image_index = 1
         
         switch(tipo) {
             
@@ -79,12 +120,13 @@ if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser m
                     xx = x-4;
                     yy = y+28;
                     
-                    play_sfx(sfx_drone_tiro);
+					play_sfx(sfx_drone_tiro);
                     var _inst = instance_create_layer(xx, yy, "Drones", obj_BalaDrone);
                     _inst.dano = dano
                     _inst.speed = 4;
                     _inst.direction = point_direction(x, y, _alvox, _alvoy);
-                    _inst.image_angle = point_direction(x, y, _alvox, _alvoy);
+					_inst.image_angle = point_direction(x, y, _alvox, _alvoy);
+					image_index = 0
                     recar[0] = recar[1];
                 } else {recar[0]--;}
                 break;
@@ -94,11 +136,20 @@ if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser m
                     xx = x-4;
                     yy = y+28;
                     
-                    play_sfx(sfx_drone_fogo);
-                    var _inst = instance_create_layer(xx, yy, "Drones", obj_FogoDrone);
+					play_sfx(sfx_drone_fogo);
+					var _teste = instance_create_layer(xx, yy, "Drones", obj_bala_lancachama);
+					_teste.speed = 3;
+                    _teste.direction = point_direction(x, y, _alvox, _alvoy);
+					_teste.dano = dano
+					_teste.image_angle = point_direction(x, y, _alvox, _alvoy)+90;
+					_teste.image_angle = point_direction(x, y, _alvox, _alvoy)+90;
+					recar[0] = recar[1];
+					
+                    /*var _inst = instance_create_layer(xx, yy, "Drones", obj_FogoDrone);
                     _inst.dano = dano
                     _inst.image_angle = point_direction(x, y, _alvox, _alvoy)+90;
-                    recar[0] = recar[1];
+					_inst.image_angle = point_direction(x, y, _alvox, _alvoy)+90;*/
+                    
                 } else {recar[0]--;}
                 break; 
         }
@@ -107,6 +158,7 @@ if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser m
 }
 
 
-
-x += hsp;
-y += vsp;
+if (!stop_move){
+	x += hsp;
+	y += vsp;
+}

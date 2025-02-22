@@ -1,0 +1,1 @@
+global.veiculo_vida[2][2] = false
