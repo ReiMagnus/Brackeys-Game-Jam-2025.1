@@ -25,7 +25,7 @@ clickTime = 0 // doubleclick
 aba_veiculo = 0; // Selecao para qual aba do menu veiculo o player esta
 
 if (!variable_global_exists("dinheiro")){
-	global.dinheiro = 9999999;
+	global.dinheiro = 9000;
 }
 
 // Fases bloqueados e desbloqueadas e estrelas das fases
@@ -83,18 +83,26 @@ botoes_jogar    = ["VOLTAR", "INICIAR"];
 botoes_veiculo  = [ ["VEICULO", "ARMAMENTO", "EQUIPAMENTOS"], ["Van", "Veiculo02"], ["Pistola", "Metralhadora", "Pulse", "Cerra"], ["P.E.M", "Reparo Rapido", "Balas de Titanio"] ];
 texto_lista     = "LISTA"; // :D 
 botao_voltar    = "VOLTAR";
-textos_creditos = " -Programacao-\nLeonardo Cordeiro (ReiMagnus)\nPaulo aaa (Xlender)\n\n" + 
-                  "-Arte-\nPaulo aaa (Xlender)\n\n" + 
+textos_creditos = " -Programacao-\nLeonardo Cordeiro (ReiMagnus)\nPaulo Vilalta (Xlender)\n\n" + 
+                  "-Arte-\nPaulo Vilalta (Xlender)\n\n" + 
                   "-Musica e Sons-\nLeonardo Cordeiro (ReiMagnus)\n\n" +
-                  "-Documento-\nLeonardo Cordeiro (ReiMagnus)\nPaulo aaa (Xlender)\n\n" +
+                  "-Documento-\nLeonardo Cordeiro (ReiMagnus)\nPaulo Vilalta (Xlender)\n\n" +
                   "Jogo criado para o Brackeys Game Jam 2025.1";
 texto_estatisticas = string(
     "Temmpo: {0}\nDinheiro ganho: {1}\nVezes jogadas: {2}\nInimigos mortos: {3}", 
     global.info_estatisticas.tempo, global.info_estatisticas.dinhe, global.info_estatisticas.jogos, global.info_estatisticas.inimi
 );
+texto_nome_fase = "Fase "; // :D 2
+textos_descricao_fases = [ // numero de descrições igual a numero de fase | se não buga
+    "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao1",
+    "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao2",
+    "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao3", 
+    "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao4", 
+    "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao5"
+]
+
 
 #region Métodos para salvar e carregar jogo | Sara Spalding
-
 
 function save_game() {
     
@@ -141,8 +149,6 @@ function load_game() {
 }
 
 function delete_save(){
-	if (file_exists("savegame.save")){
-		file_delete("savegame.save")
-	}
+	if (file_exists("savegame.save")){ file_delete("savegame.save"); }
 }
 #endregion

@@ -56,6 +56,7 @@ if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser m
                 hsp = 0;
                 vsp = 0;
                 
+                play_sfx(sfx_drone_espinho);
                 var _parte = clamp(floor((x-obj_veiculo.x)/80), 0, 2)
                 global.veiculo_vida[_parte][0] -= dano;
                 recar[0] = recar[1];
@@ -78,10 +79,12 @@ if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser m
                     xx = x-4;
                     yy = y+28;
                     
+                    play_sfx(sfx_drone_tiro);
                     var _inst = instance_create_layer(xx, yy, "Drones", obj_BalaDrone);
                     _inst.dano = dano
                     _inst.speed = 4;
                     _inst.direction = point_direction(x, y, _alvox, _alvoy);
+                    _inst.image_angle = point_direction(x, y, _alvox, _alvoy);
                     recar[0] = recar[1];
                 } else {recar[0]--;}
                 break;
@@ -91,6 +94,7 @@ if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser m
                     xx = x-4;
                     yy = y+28;
                     
+                    play_sfx(sfx_drone_fogo);
                     var _inst = instance_create_layer(xx, yy, "Drones", obj_FogoDrone);
                     _inst.dano = dano
                     _inst.image_angle = point_direction(x, y, _alvox, _alvoy)+90;

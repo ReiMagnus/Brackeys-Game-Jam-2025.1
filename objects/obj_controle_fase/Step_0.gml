@@ -29,9 +29,6 @@ if(!pause) {
             var _irandom  = irandom(99)-10;
             var _inimigo  = 0;
             
-            show_debug_message("----------")
-            show_debug_message(_inimigos)
-            
             while(_irandom > 0) {
                 if(inimigos[_inimigo] != -1) {
                     if(_inimigos[_inimigo] <= 0) {_inimigo++;}
@@ -40,6 +37,7 @@ if(!pause) {
                 } else {_inimigo++;}
             }
             
+           
             //_inimigo = 2; // Inimigo fixo para testes
             
             var _xy_random = random(1);
@@ -76,6 +74,7 @@ if(!pause) {
 			alarm[0] = game_get_speed(gamespeed_fps)*30 // 30seg
 			break;
 		}
+        play_sfx(sfx_equip_generico);
 		veiculo_equip = -1
 	}
 	

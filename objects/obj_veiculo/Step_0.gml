@@ -7,6 +7,7 @@ if (room = rm_Fase){
 		x += -2 + round(qtd/2)
 	}
 	else{ // pra frente
+        if(!audio_is_playing(sfx_veiculo_acelerar)) { play_sfx(sfx_veiculo_acelerar); } 
 		qtd++;
 		qtd = clamp(qtd,-2,aceleracao_max)
 		x += 1 + round(qtd/2)

@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_FogoDrone",
-    "path":"sprites/spr_FogoDrone/spr_FogoDrone.yy",
+    "name":"spr_fogo_drone",
+    "path":"sprites/spr_fogo_drone/spr_fogo_drone.yy",
   },
   "spriteMaskId":null,
   "visible":true,

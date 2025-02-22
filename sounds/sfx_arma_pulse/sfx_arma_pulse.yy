@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"sfx_arma_pulse",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.511497,
+  "name":"sfx_arma_pulse",
+  "parent":{
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_arma_pulse.wav",
+  "type":0,
+  "volume":1.0,
+}

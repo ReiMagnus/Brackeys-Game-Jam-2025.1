@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_BalaDrone",
-    "path":"sprites/spr_BalaDrone/spr_BalaDrone.yy",
+    "name":"spr_bala_drone",
+    "path":"sprites/spr_bala_drone/spr_bala_drone.yy",
   },
   "spriteMaskId":null,
   "visible":true,
