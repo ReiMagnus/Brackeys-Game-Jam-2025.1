@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Drones",
-    "path":"folders/Objects/Drones.yy",
+    "path":"folders/Objects/Fase/Drones.yy",
   },
   "parentObjectId":null,
   "persistent":false,

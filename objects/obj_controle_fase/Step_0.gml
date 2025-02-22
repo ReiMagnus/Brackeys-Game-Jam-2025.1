@@ -12,6 +12,13 @@ if(!pause) {
         _b = ds_map_find_next(background_map, _b)
     }
     
+	if (temp_fase > 0){
+		temp_fase--;
+	}
+	else{
+		temp_fase = 0
+		gameEnd = 0
+	}
     
     // Criar inimigos na tela --------------------
     if(combate) {
@@ -44,4 +51,32 @@ if(!pause) {
             temp_spawn[0]--;    
         }
     }
+	
+	
+	// Usar equipamentos
+	if (mouse_check_button_released(mb_right)){
+		switch (veiculo_equip){
+			case 0:
+			with (obj_DroneBase) { instance_destroy() }
+			break;
+			
+			case 1:
+			var menor_v = 0
+			for (var i = 0; i < 3; i++){
+				if (global.veiculo_vida[i][0] < global.veiculo_vida[menor_v][0]){
+					menor_v = i
+				}
+			}
+			
+			global.veiculo_vida[menor_v][0] = global.veiculo_vida[menor_v][1]
+			break;
+			
+			case 2:
+			dano_buff = 2
+			alarm[0] = game_get_speed(gamespeed_fps)*30 // 30seg
+			break;
+		}
+		veiculo_equip = -1
+	}
+	
 }

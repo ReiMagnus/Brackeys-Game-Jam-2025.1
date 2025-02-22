@@ -10,8 +10,8 @@
   "name":"obj_veiculo",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Fase",
+    "path":"folders/Objects/Fase.yy",
   },
   "parentObjectId":null,
   "persistent":false,

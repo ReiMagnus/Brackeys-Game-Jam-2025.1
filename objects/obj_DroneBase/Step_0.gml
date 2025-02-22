@@ -1,4 +1,32 @@
 
+if (life <= 0){ 
+	switch(tipo) {
+	    case 0: 
+		global.dinhe_total += 2
+		break;
+		
+	    case 1: 
+		global.dinhe_total += 25
+	    break;
+		
+	    case 2: 
+		global.dinhe_total += 10
+	    break;
+		
+	    case 3: 
+		global.dinhe_total += 5
+	    break;
+		
+	    case 4: 
+		global.dinhe_total += 25
+	    break;
+	}
+	
+	global.inimigo_total++;
+	instance_destroy(self) 
+}
+
+
 var _alvox = obj_veiculo.x+120+mirax;
 var _alvoy = obj_veiculo.y+60 ;
 

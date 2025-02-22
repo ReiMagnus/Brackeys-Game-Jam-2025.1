@@ -1,3 +1,12 @@
+// parallax
+// vel de cada parte
+background_map = ds_map_create();
+background_map[? layer_get_id("Background_0")] = -4;
+background_map[? layer_get_id("Background_1")] = -1;
+background_map[? layer_get_id("Background_2")] = -0.8;
+background_map[? layer_get_id("Background_3")] = -0.3;
+background_map[? layer_get_id("Background_4")] = -0.2;
+
 
 global.escala_janela = 2; // 1 = 640x360
 global.musica = true;
@@ -15,52 +24,63 @@ selecao = pointer_null
 clickTime = 0 // doubleclick
 aba_veiculo = 0; // Selecao para qual aba do menu veiculo o player esta
 
-global.dinheiro = 9999999;
+if (!variable_global_exists("dinheiro")){
+	global.dinheiro = 9999999;
+}
 
 // Fases bloqueados e desbloqueadas e estrelas das fases
-info_fases = [ //[disponivel, estrelas]
-    [true,  0],
-    [false, 0],
-    [false, 0],
-    [false, 0],
-    [false, 0],
-];
+if (!variable_global_exists("info_fases")){
+	global.info_fases = [ //[disponivel, estrelas]
+	    [true,  0],
+	    [false, 0],
+	    [false, 0],
+	    [false, 0],
+	    [false, 0],
+	];
+}
 
 // Informacao sobre itens desbloqueados e comprados
-info_itens = [ // [disponivel, preco] // Depois adicionar um preco mais correto aos itens
-    [true, 0, false, 9999], // Veiculos
-    [true, 0, false, 100, false, 200, false, 300,], // Armas
-    [true, 0, false, 100, false, 200]  // Equipamentos
-];
-
+if (!variable_global_exists("info_itens")){
+	global.info_itens = [ // [disponivel, preco] // Depois adicionar um preco mais correto aos itens
+		[true, 0, false, 9999], // Veiculos
+		[true, 0, false, 100, false, 200, false, 300,], // Armas
+		[true, 0, false, 100, false, 200]  // Equipamentos
+	];
+}
+	
 // Veiculo
-global.info_veiculo = {
-    tipo  : 0, // qual veiculo
-    arma0 : 1,
-    arma1 : 3,
-    arma2 : -1, 
-    arma3 : -1,
-    equip : 0
+if (!variable_global_exists("info_veiculo")){
+	global.info_veiculo = {
+	    tipo  : 0, // qual veiculo
+	    arma0 : 0,
+	    arma1 : -1,
+	    arma2 : -1, 
+	    arma3 : -1,
+	    equip : 0
+	}
 }
 
 // Estatisticas guardadas 
-global.info_estatisticas = {
-    tempo : 0,
-    dinhe : 0, // dinheiro
-    jogos : 0, // Fases jogadas
-    inimi : 0, // Inimigos mortos
+if (!variable_global_exists("info_estatisticas")){
+	global.info_estatisticas = {
+	    tempo : 0,
+	    dinhe : 0, // dinheiro
+	    jogos : 0, // Fases jogadas
+	    inimi : 0, // Inimigos mortos
+	}
 }
 
 global.info_init_fase = {
     inimigos   : [20, 20, 20, 20, 20],
     temp_spawn : [0, 60], // [tempo_atual, tempo_padrap]
     temp_fase  : 0  // contagem por frames | 3600 = 1 minuto
+	// usar game_get_speed(gamespeed_fps)
 }
 
 // Depois, mudar TODOS os textos para ingles
 botoes_main     = ["JOGAR", "VEICULO", "OPCOES", "CREDITOS", "SAIR"];
 botoes_jogar    = ["VOLTAR", "INICIAR"];
-botoes_veiculo  = [ ["VEICULO", "ARMAMENTO", "EQUIPAMENTOS"], ["Van", "Veiculo02"], ["Pistola", "Metralhadora", "Pulse", "Cerra"], ["P.E.M", "Equipamento02", "Equipamento03"] ];
+botoes_veiculo  = [ ["VEICULO", "ARMAMENTO", "EQUIPAMENTOS"], ["Van", "Veiculo02"], ["Pistola", "Metralhadora", "Pulse", "Cerra"], ["P.E.M", "Reparo Rapido", "Balas de Titanio"] ];
 texto_lista     = "LISTA"; // :D 
 botao_voltar    = "VOLTAR";
 textos_creditos = " -Programacao-\nLeonardo Cordeiro (ReiMagnus)\nPaulo aaa (Xlender)\n\n" + 
@@ -83,8 +103,8 @@ function save_game() {
     
     // Informações para serem salvas no computador
     array_push(_saveData, global.dinheiro);
-    array_push(_saveData, info_fases);
-    array_push(_saveData, info_itens);
+    array_push(_saveData, global.info_fases);
+    array_push(_saveData, global.info_itens);
     array_push(_saveData, global.info_veiculo);
     array_push(_saveData, global.info_estatisticas);
     
@@ -110,13 +130,19 @@ function load_game() {
         var _loadData = json_parse(_string);
         
         global.dinheiro          = _loadData[0];
-        info_fases               = _loadData[1];
-        info_itens               = _loadData[2];
+        global.info_fases        = _loadData[1];
+        global.info_itens		 = _loadData[2];
         global.info_veiculo      = _loadData[3];
         global.info_estatisticas = _loadData[4];
         
         show_debug_message("Game loaded! " + _string);
     }
     
+}
+
+function delete_save(){
+	if (file_exists("savegame.save")){
+		file_delete("savegame.save")
+	}
 }
 #endregion

@@ -1,3 +1,5 @@
+// conserta gui da fase
+display_set_gui_size(640*2, 360*2);
 
 // Posição do mouse na janela
 var _mx = device_mouse_x_to_gui(0);
@@ -49,14 +51,14 @@ switch(menu_atual) {
                 }
             }
             
-            draw_rectangle(x1, y1, x2, y2, 1); // Area de colisão dos botões
-            draw_text_transformed(xx, yy, botoes_main[i], global.escala_janela, global.escala_janela, 0);
+            //draw_rectangle(x1, y1, x2, y2, 1); // Area de colisão dos botões
+			draw_text_transformed_outlined(xx, yy, c_black, c_white, botoes_main[i], global.escala_janela, global.escala_janela);
         }
         break;
         
     case abas_menu.jogar :
         
-        draw_sprite_ext(spr_MenuFases, 0, 0, 0, global.escala_janela, global.escala_janela, 0, c_white, 1);
+        draw_sprite_ext(spr_map, 0, 0, 0, global.escala_janela, global.escala_janela, 0, c_white, 1);
         
         var xx, yy, x1, y1, x2, y2;
         
@@ -77,18 +79,84 @@ switch(menu_atual) {
             x2 = xx + (50 * global.escala_janela);
             y2 = yy + (50 * global.escala_janela);
             
+			// conferir se ja jogaram na fase
+			var visitado = 0
+			if(global.info_fases[i][1] > 0) { visitado = 2; }
+			
             // Selecioando a fase
-            if(point_in_rectangle(_mx, _my, x1, y1, x2, y2)) { if(mouse_check_button_released(mb_left) and info_fases[i][0] == true) { selecao = i; } }
-            var _selecao = i == selecao ? 1 : 0;
-            
+            if(point_in_rectangle(_mx, _my, x1, y1, x2, y2)) { if(mouse_check_button_released(mb_left) and global.info_fases[i][0] == true) { selecao = i; } }
+			
+            //var _selecao = i == selecao ? 1 : 0;
+
+			draw_set_halign(fa_center);
+            draw_set_font(fnt_BotoesMenu);
+			
             // Desenahando os botões na tela
             // draw_rectangle(x1, y1, x2, y2, 1); desenhando a colisão do botão
-            draw_sprite_ext(spr_Botoes, i*2+_selecao, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1);
+			
+			// desenhar fase icones e descricao
+			switch (i){
+				case 0:
+				if (selecao != i){ draw_sprite_ext(spr_map_l1, 0+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1); }
+				else {
+					draw_sprite_ext(spr_map_l1, 1+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1)
+					draw_text_ext_transformed(_wgui/2, _hgui/2+196, "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao1", 24, 400, global.escala_janela, global.escala_janela, 0);
+				}
+				break;
+				
+				case 1:
+				if (selecao != i){ draw_sprite_ext(spr_map_l2, 0+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1); }
+				else {
+					draw_sprite_ext(spr_map_l2, 1+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1)
+					draw_text_ext_transformed(_wgui/2, _hgui/2+196, "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao2", 24, 400, global.escala_janela, global.escala_janela, 0);
+				}
+				break;
+				
+				case 2:
+				if (selecao != i){ draw_sprite_ext(spr_map_l3, 0+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1); }
+				else {
+					draw_sprite_ext(spr_map_l3, 1+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1)
+					draw_text_ext_transformed(_wgui/2, _hgui/2+196, "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao3", 24, 400, global.escala_janela, global.escala_janela, 0);
+				}
+				break;
+				
+				case 3:
+				if (selecao != i){ draw_sprite_ext(spr_map_l4, 0+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1); }
+				else {
+					draw_sprite_ext(spr_map_l4, 1+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1)
+					draw_text_ext_transformed(_wgui/2, _hgui/2+196, "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao4", 24, 400, global.escala_janela, global.escala_janela, 0);
+				}
+				break;
+				
+				case 4:
+				if (selecao != i){ draw_sprite_ext(spr_map_l5, 0+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1); }
+				else {
+					draw_sprite_ext(spr_map_l5, 1+visitado, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1)
+					draw_text_ext_transformed(_wgui/2, _hgui/2+196, "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao5", 24, 400, global.escala_janela, global.escala_janela, 0);
+				}
+				break;
+			}
+			
+			if (selecao != pointer_null){
+				var nivel = selecao+1
+				var stars_width = (sprite_get_width(spr_stars))
+				
+				// fase nome
+				draw_text_transformed(_wgui/2-120, _hgui/2+128, "Fase " + string(nivel), global.escala_janela, global.escala_janela, 0);
+					
+				// desenhar estrelas
+				for (var j = -1; j < 2; j++){
+					if ((j+1) < global.info_fases[selecao][1]) { draw_sprite_ext(spr_stars, 1, (_wgui/2) + 100 - stars_width + j*(stars_width+16), (_hgui/2)+100, global.escala_janela, global.escala_janela, 0, c_white, 1) }
+					else { draw_sprite_ext(spr_stars, 0,(_wgui/2) + 100 - stars_width + j*(stars_width+16), (_hgui/2)+100, global.escala_janela, global.escala_janela, 0, c_white, 1) }
+				}
+			}
+					
+            //draw_sprite_ext(spr_Botoes, i*2+_selecao, xx, yy, global.escala_janela, global.escala_janela, 0, c_white, 1);
         }
             
             
-            draw_set_valign(fa_bottom);
-            draw_set_font(fnt_BotoesMenu); // Fonte Botões Menu ///Pode mudar para uma fonte personalizada depois
+           draw_set_valign(fa_bottom);
+           draw_set_font(fnt_BotoesMenu); // Fonte Botões Menu ///Pode mudar para uma fonte personalizada depois
             
         for(var i = 0; i < array_length(botoes_jogar); i++) { // Botões do menu
             
@@ -114,7 +182,43 @@ switch(menu_atual) {
                 if(mouse_check_button_released(mb_left)) { 
                     switch (i) {
                         case 0 : menu_atual = abas_menu.main; break; // VOLTAR
-                        case 1 : room_goto(Room1) // Metodo para enviar para a fase com os parametros certos /// Coloquei para enviar para room1 para testar
+                        case 1 : 
+						// settar info para fase que entrar
+						switch (selecao+1){
+							case 1:
+							global.info_init_fase.inimigos = [20, 20, 20, 20, 20]
+							global.info_init_fase.temp_spawn = [0, 60]
+							global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*10 // 10 sec
+							break;
+							
+							case 2:
+							global.info_init_fase.inimigos = [-1, -1, -1, -1, -1]
+							global.info_init_fase.temp_spawn = [0, 0]
+							global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*12
+							break;
+							
+							case 3:
+							global.info_init_fase.inimigos = [-1, -1, -1, -1, -1]
+							global.info_init_fase.temp_spawn = [0, 0]
+							global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*43
+							break;
+							
+							case 4:
+							global.info_init_fase.inimigos = [-1, -1, -1, -1, -1]
+							global.info_init_fase.temp_spawn = [0, 0]
+							global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*87
+							break;
+							
+							case 5:
+							global.info_init_fase.inimigos = [-1, -1, -1, -1, -1]
+							global.info_init_fase.temp_spawn = [0, 0]
+							global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*100
+							break;						
+						}
+						
+						global.info_init_fase.fase = selecao+1
+						room_goto(rm_Fase) 
+						break; // Metodo para enviar para a fase com os parametros certos ---------------------------------------------------
                     }
                 } 
             }
@@ -278,9 +382,62 @@ switch(menu_atual) {
             y2 = yy + (_hgui/8/2-2);
             
             if(point_in_rectangle(_mx,  _my, x1, y1, x2, y2)) {
-                if(mouse_check_button_released(mb_left)) {
+				
+				draw_set_halign(fa_left)
+				draw_set_valign(fa_top)
+				
+				// DESCRIÇÃO 
+				if (aba_veiculo == 0){
+					switch (i){
+						case 0:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "Descricao carro 1.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+						
+						case 1:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "Descricao carro 2.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+					}
+				}
+				else if (aba_veiculo == 1){
+					switch (i){
+						case 0:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "pistola.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+						
+						case 1:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "metralhadora.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+						
+						case 2:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "pulse",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+						
+						case 3:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "serra",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+					}
+				}
+                else if (aba_veiculo == 2){
+					switch (i){
+						case 0:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "epm",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+						
+						case 1:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "outro eqp",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+						
+						case 2:
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "outro outro eqp",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						break;
+					}
+				}
+				draw_set_halign(fa_center)
+				draw_set_valign(fa_middle)
+				
+				if(mouse_check_button_released(mb_left)) {
                     
-                    if(info_itens[aba_veiculo][i*2]) { // Verificando se está disponivel ou não
+                    if(global.info_itens[aba_veiculo][i*2] && clickTime == -1) { // Verificando se está disponivel ou não
                         
                         switch(aba_veiculo) {
                             case 0 : if(i == 1) {show_message("ERROR");} break; // Veiculo
@@ -292,22 +449,35 @@ switch(menu_atual) {
                             
                         }
                         draw_rectangle_color(x1, y1, x2, y2, c_white, c_white, c_white, c_white, 0);
-                    } else {
-                        
-                        if((current_time - clickTime) < 200) { //1 sec == 1000
-                            if(info_itens[aba_veiculo][i*2+1] < global.dinheiro) { global.dinheiro -= info_itens[aba_veiculo][i*2+1]; info_itens[aba_veiculo][i*2] = true; }
-                            draw_rectangle_color(x1, y1, x2, y2, c_white, c_white, c_white, c_white, 0);
-                        }
-                        clickTime = current_time; // save click time (maybe there's better time keeping source than current_time)
-                        
-                    }
-                    
+                    } 
                 }
+				
+				// comprando item
+				if(mouse_check_button(mb_left)) {
+					if(!global.info_itens[aba_veiculo][i*2]) { // Verificando se está disponivel ou não
+						if (clickTime == - 1) { clickTime = 0 }
+						
+                        clickTime+=6;
+						
+						draw_rectangle_color(x1, y1, x1+clickTime, y2, c_white, c_white, c_white, c_white, 0);
+						
+                        if(global.info_itens[aba_veiculo][i*2+1] < global.dinheiro) { 
+							if clickTime >= (x2 - x1){
+								global.dinheiro -= global.info_itens[aba_veiculo][i*2+1]; 
+								global.info_itens[aba_veiculo][i*2] = true;
+								clickTime = 0
+							}
+						}
+                    }
+				}
+				else{
+					clickTime = -1	
+				}
             }
             
             draw_rectangle(x1, y1, x2, y2, 1);
             
-            var _string = info_itens[aba_veiculo][i*2] ? botoes_veiculo[aba_veiculo+1][i] : string("X  ${0}",  info_itens[aba_veiculo][i*2+1]);
+            var _string = global.info_itens[aba_veiculo][i*2] ? botoes_veiculo[aba_veiculo+1][i] : string("X  ${0}",  global.info_itens[aba_veiculo][i*2+1]);
             draw_text_transformed(xx, yy, _string, global.escala_janela, global.escala_janela, 0);
             
         }

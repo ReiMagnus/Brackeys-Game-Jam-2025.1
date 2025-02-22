@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Balas",
-    "path":"folders/Objects/Balas.yy",
+    "path":"folders/Objects/Fase/Balas.yy",
   },
   "parentObjectId":null,
   "persistent":false,

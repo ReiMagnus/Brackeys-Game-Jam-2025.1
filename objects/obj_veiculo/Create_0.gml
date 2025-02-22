@@ -4,6 +4,7 @@ movement = 0 // 0 - indo pra traz
 			 
 qtd = 0
 aceleracao_max = 10
+atras_debuff = false
 
 // direção mouse em relação parte
 dir_atras = 0
