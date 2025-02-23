@@ -28,8 +28,8 @@ if (room = rm_Fase){
 	if (global.veiculo_vida[0][0] <= 0){ 
 		// aumenta tempo da fase
 		if (!atras_debuff){
-			obj_controle_fase.temp_fase += game_get_speed(gamespeed_fps)*15
-			obj_controle_fase.temp_fase_total += game_get_speed(gamespeed_fps)*15
+			obj_controle_fase.temp_fase += game_get_speed(gamespeed_fps)*30
+			obj_controle_fase.temp_fase_total += game_get_speed(gamespeed_fps)*30
 			atras_debuff = true
 		}
 	}

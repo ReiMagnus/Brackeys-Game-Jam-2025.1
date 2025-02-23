@@ -1,1 +1,1 @@
-play_sfx(sfx_menu_compra);
+//play_sfx(sfx_menu_compra);

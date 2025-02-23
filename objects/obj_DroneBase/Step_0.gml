@@ -6,19 +6,19 @@ if (life <= 0){
 		break;
 		
 	    case 1: 
-		global.dinhe_total += 25
-	    break;
-		
-	    case 2: 
 		global.dinhe_total += 10
 	    break;
 		
-	    case 3: 
+	    case 2: 
 		global.dinhe_total += 5
 	    break;
 		
+	    case 3: 
+		global.dinhe_total += 12
+	    break;
+		
 	    case 4: 
-		global.dinhe_total += 25
+		global.dinhe_total += 15
 	    break;
 	}
 	
@@ -50,12 +50,12 @@ image_xscale = x >= _alvox ? 1 : -1; //Direcao do olhar do drone
 
 // Forma de atacar 
 if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser melhor para oque eu quero fazer
-    var _dist = point_distance(x, y, _alvox, _alvoy) < 10;
+    var _dist = point_distance(x, y, _alvox, _alvoy) < 20;
 
-	var _dist_tooclose = point_distance(x, y, _alvox, _alvoy) < 15;
-	var _dist_realclose = point_distance(x, y, _alvox, _alvoy) < 20;
-	var _dist_close = point_distance(x, y, _alvox, _alvoy) < 70;
-	var _dist_mid = point_distance(x, y, _alvox, _alvoy) < 140;
+	var _dist_tooclose = point_distance(x, y, _alvox, _alvoy) < 25;
+	var _dist_realclose = point_distance(x, y, _alvox, _alvoy) < 30;
+	var _dist_close = point_distance(x, y, _alvox, _alvoy) < 80;
+	var _dist_mid = point_distance(x, y, _alvox, _alvoy) < 150;
 	
     if(_dist) {
         if(tipo == 2) { 
@@ -103,6 +103,9 @@ if(tipo < 3) { // Drones melee // poderia ser feito com switch, mas if pra ser m
 	else if (tipo == 1){
 		if (_dist_realclose){
 			image_blend = c_orange
+		}
+		else{
+			image_blend = c_white	
 		}
 	}
 	

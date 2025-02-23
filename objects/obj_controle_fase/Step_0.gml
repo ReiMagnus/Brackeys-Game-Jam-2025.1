@@ -74,7 +74,7 @@ if(!pause) {
 			case 2:
 			play_sfx(sfx_equip_generico);
 			dano_buff = 2
-			alarm[0] = game_get_speed(gamespeed_fps)*30 // 30seg
+			alarm[0] = game_get_speed(gamespeed_fps)*45 // 45seg
 			break;
 		}
 		veiculo_equip = -1

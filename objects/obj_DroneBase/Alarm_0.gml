@@ -2,7 +2,7 @@
 switch(tipo) {
     case 0 : 
         spd = 1; 
-        life = 20; 
+        life = 15; 
         range = 5; 
         dano = 1; 
         recar = [0, 0];
@@ -10,15 +10,15 @@ switch(tipo) {
         break;
     case 1 : 
         spd = 0.5; 
-        life = 40; 
+        life = 35; 
         range = 5; 
         dano = 3; 
         recar = [0, 0];
         sprite_index = spr_drone_parrudo; 
         break;
     case 2 : 
-        spd = 2; 
-        life = 15; 
+        spd = 1.5; 
+        life = 10; 
         range = 5; 
         dano = 2; 
         recar = [0, 45];
@@ -26,18 +26,18 @@ switch(tipo) {
         break;
     case 3 : 
         spd = 1; 
-        life = 20; 
+        life = 10; 
         range = 250; 
         dano = 1; 
-        recar = [0, 20];
+        recar = [0, 25];
         sprite_index = spr_drone_arma; 
         break;
     case 4 : 
         spd = 1; 
-        life = 20; 
+        life = 15; 
         range = 200; 
-        dano = 1; 
-        recar = [0, 180];
+        dano = 3; 
+        recar = [0, 90];
         sprite_index = spr_drone_lancachama; 
         break;
 }

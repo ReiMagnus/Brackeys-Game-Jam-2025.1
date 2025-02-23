@@ -46,17 +46,17 @@ dano_buff = 1
 // tempo tiro
 global.info_armas = [ 
 	[game_get_speed(gamespeed_fps)*0.2, 6], // pistola
-	[game_get_speed(gamespeed_fps)*0.1, 2], // metralhadora
+	[game_get_speed(gamespeed_fps)*0.1, 3], // metralhadora
 	[game_get_speed(gamespeed_fps)*3, 20], // pulse
-	[game_get_speed(gamespeed_fps)*0.4, 15] // serra
+	[game_get_speed(gamespeed_fps)*0.4, 40] // serra
 ];
 
 // VAN
 if global.info_veiculo.tipo = 0{
 	global.veiculo_vida = [ // [vida atual, vida max, sinalização de dano]
-		[50, 50, false], // atras
-		[50, 50, false], // meio
-		[50, 50, false]  // frente
+		[30, 30, false], // atras
+		[30, 30, false], // meio
+		[30, 30, false]  // frente
 	];
 
 	global.veiculo_armas = [ // [tipo de arma, status, timer]

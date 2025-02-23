@@ -24,8 +24,8 @@ function play_music() {
         if(global.musica_atual != noone and audio_is_playing(global.musica_atual)) {audio_stop_sound(global.musica_atual);}
         
         switch(room) {
-            case rm_Menu: global.musica_atual = audio_play_sound(music_fase, 10, true); break;
-            case rm_Fase: /*global.musica_atual = audio_play_sound(music_fase, 10, true);*/ break;
+            case rm_Menu: global.musica_atual = audio_play_sound(music_menu, 10, true); break;
+            case rm_Fase: global.musica_atual = audio_play_sound(music_fase, 10, true); break;
         }
         
     } else {

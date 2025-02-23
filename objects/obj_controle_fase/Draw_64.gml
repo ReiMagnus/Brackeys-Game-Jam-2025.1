@@ -49,7 +49,7 @@ if (room = rm_Fase){
 		
 		draw_set_halign(fa_left);
 		draw_set_valign(fa_middle);
-		draw_set_font(fnt_BotoesMenu);
+		draw_set_font(global.fnt_texto_hud);
 		
 		// desenha estrelas do nivel, desempenho
 		draw_sprite(spr_fase_final, 0, 0 , 0)
@@ -89,6 +89,7 @@ if (room = rm_Fase){
 		// botão menu
 		if(point_in_rectangle(_mx, _my, _wgui/2-(menu_width/2), _hgui/2+70,_wgui/2-(menu_width/2)+menu_width, _hgui/2+70+menu_height)){
 			if(mouse_check_button_released(mb_left)){
+				show_debug_message(global.info_estatisticas)
 				play_sfx(sfx_menu_simples);
 				global.info_estatisticas.tempo += temp_fase_total
 				global.info_estatisticas.dinhe += global.dinhe_total
@@ -104,7 +105,7 @@ if (room = rm_Fase){
 		draw_set_halign(fa_center);
 		draw_set_valign(fa_top);
 		draw_set_color($95BF91)
-		draw_text(_wgui/2,_hgui/2+80, "MENU")
+		draw_text(_wgui/2,_hgui/2+83, "MENU")
 		
 		draw_set_halign(-1);
 		draw_set_valign(-1);
@@ -131,7 +132,7 @@ if(pause && temp_fase != 0 && !gameOver) { // HUD com o jogo pausado
     
     for(var i = 0; i < _total_opcoes; i++) {
         xx = ((_wgui/2-_total/2) + _tam) + ((_tam*2+_esp)*i);
-        yy = _hgui*0.25;
+        yy = _hgui/2;
         
         x1 = xx - _tam;
         y1 = yy - _tam;
@@ -173,7 +174,7 @@ if (gameOver == 1){
 	
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_middle);
-	draw_set_font(fnt_BotoesMenu);
+	draw_set_font(global.fnt_texto_hud);
 	
 	draw_text_transformed(_wgui/2, _hgui/2, "GAME OVER", global.escala_janela, global.escala_janela, 0)
 	
@@ -203,7 +204,7 @@ if (gameOver == 1){
 	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);
 	draw_set_color(c_white)
-	draw_text(_wgui/2,_hgui/2+45, "MENU")
+	draw_text(_wgui/2,_hgui/2+48, "MENU")
 		
 	draw_set_halign(-1);
 	draw_set_valign(-1);

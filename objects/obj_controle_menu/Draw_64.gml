@@ -18,7 +18,8 @@ switch(menu_atual) {
         draw_set_valign(fa_middle);
         draw_set_font(global.fnt_texto_hud); // Fonte Botões Menu ///Pode mudar para uma fonte personalizada depois
         
-        draw_text_transformed(40, _hgui*0.20, "NOME DO JOGO", 6, 6, 0); // Futuramente isso será o sprite
+		draw_sprite_ext(spr_title, 0, 40, _hgui*0.10, 3, 3, 0, c_white, 1)
+        //draw_text_transformed(40, _hgui*0.20, "NOME DO JOGO", 6, 6, 0); // Futuramente isso será o sprite
         
         var xx, yy, x1, y1, x2, y2;
         
@@ -152,33 +153,33 @@ switch(menu_atual) {
                         if(selecao != pointer_null) {
                             switch (selecao+1){
                                case 1:
-                               global.info_init_fase.inimigos = [-1, -1, -1, -1, 100]
+                               global.info_init_fase.inimigos = [80, -1, 20, -1, -1]
                                global.info_init_fase.temp_spawn = [0, 60]
-                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*1 // 10 sec
+                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*60
                                break;
                                
                                case 2:
-                               global.info_init_fase.inimigos = [-1, -1, -1, -1, -1]
-                               global.info_init_fase.temp_spawn = [0, 0]
-                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*12
+                               global.info_init_fase.inimigos = [45, 10, 45, -1, -1]
+                               global.info_init_fase.temp_spawn = [0, 50]
+                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*75
                                break;
                                
                                case 3:
-                               global.info_init_fase.inimigos = [-1, -1, -1, -1, -1]
-                               global.info_init_fase.temp_spawn = [0, 0]
-                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*43
+                               global.info_init_fase.inimigos = [30, 10, 40, -1, 20]
+                               global.info_init_fase.temp_spawn = [0, 50]
+                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*90
                                break;
                                
                                case 4:
-                               global.info_init_fase.inimigos = [-1, -1, -1, -1, -1]
-                               global.info_init_fase.temp_spawn = [0, 0]
-                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*87
+                               global.info_init_fase.inimigos = [30, 10, 20, 10, 30]
+                               global.info_init_fase.temp_spawn = [0, 45]
+                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*105
                                break;
                                
                                case 5:
-                               global.info_init_fase.inimigos = [-1, -1, -1, -1, -1]
-                               global.info_init_fase.temp_spawn = [0, 0]
-                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*100
+                               global.info_init_fase.inimigos = [20, 20, 20, 20, 20]
+                               global.info_init_fase.temp_spawn = [0, 45]
+                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*120
                                break;						
                             }
                             global.info_init_fase.fase = selecao+1
@@ -361,45 +362,45 @@ switch(menu_atual) {
 				if (aba_veiculo == 0){
 					switch (i){
 						case 0:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "Descricao carro 1.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "A van modified for combat against the machine revolt, good mobility, honest durability and with two weapon slots.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 						
 						case 1:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "Descricao carro 2.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "-----.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 					}
 				}
 				else if (aba_veiculo == 1){
 					switch (i){
 						case 0:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "pistola.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "Simple and reliable semi-automatic weapon, it is not the best weapon, but it does not let you down.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 						
 						case 1:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "metralhadora.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "A powerful weapon that fires two projectiles with high firing speed, a consumer's dream in a post-apocalyptic world.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 						
 						case 2:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "pulse",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "An energy cannon that destroys everything in its path, but with a high reload time. Woah!",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 						
 						case 3:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "cerra",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "A rotating saw that cuts everything it touches. It is attached to the frame of your vehicle, what could possibly go wrong?",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 					}
 				}
                 else if (aba_veiculo == 2){
 					switch (i){
 						case 0:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "epm",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "A device that creates an electromagnetic field that destroys nearby visible drones.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 						
 						case 1:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "outro eqp",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "A repair kit used to repair the most damaged part of the vehicle so you can drive further.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 						
 						case 2:
-						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "outro outro eqp",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
+						draw_text_ext_transformed((_wgui/8)*4,(_hgui/8) + 6, "Changes the ammunition in your weapons to a powerful one for a short period of time, increasing your drone's destruction capacity.",16,(_wgui/8)-6, global.escala_janela, global.escala_janela, 0)
 						break;
 					}
 				}
@@ -514,6 +515,11 @@ switch(menu_atual) {
         }
         
         #region Estatisticas 
+		texto_estatisticas = string(
+		    "Time:   {0}\nMoney earnt:   {1}\nMissions played:   {2}\nEnemies killed:   {3}", 
+		    global.info_estatisticas.tempo, global.info_estatisticas.dinhe, global.info_estatisticas.jogos, global.info_estatisticas.inimi
+		);
+
         draw_set_font(global.fnt_texto_hud);
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);

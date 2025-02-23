@@ -10,9 +10,9 @@ background_map[? layer_get_id("Background_4")] = -0.2;
 
 
 global.escala_janela = 2; // 1 = 640x360
-global.musica = true;
-global.musica_atual = noone;
-global.sons = true;
+if (!variable_global_exists("musica")) { global.musica = true; }
+if (!variable_global_exists("sons")) { global.sons = true; }
+if (!variable_global_exists("musica_atual")) { global.musica_atual = noone; }
 
 play_music();
 
@@ -31,7 +31,7 @@ aba_veiculo = 0; // Selecao para qual aba do menu veiculo o player esta
 
 
 if (!variable_global_exists("dinheiro")){
-	global.dinheiro = 9000;
+	global.dinheiro = 0;
 }
 
 // Fases bloqueados e desbloqueadas e estrelas das fases
@@ -49,8 +49,8 @@ if (!variable_global_exists("info_fases")){
 if (!variable_global_exists("info_itens")){
 	global.info_itens = [ // [disponivel, preco] // Depois adicionar um preco mais correto aos itens
 		[true, 0, false, 9999], // Veiculos
-		[true, 0, false, 100, false, 200, false, 300,], // Armas
-		[true, 0, false, 100, false, 200]  // Equipamentos
+		[true, 0, false, 100, false, 200, false, 400,], // Armas
+		[true, 0, false, 100, false, 100]  // Equipamentos
 	];
 }
 	
@@ -84,7 +84,7 @@ global.info_init_fase = {
 }
 
 // Depois, mudar TODOS os textos para ingles
-botoes_main     = ["JOGAR", "VEICULO", "OPCOES", "CREDITOS", "SAIR"];
+/*botoes_main     = ["JOGAR", "VEICULO", "OPCOES", "CREDITOS", "SAIR"];
 botoes_jogar    = ["VOLTAR", "INICIAR"];
 botoes_veiculo  = [ ["VEICULO", "ARMAMENTO", "EQUIPAMENTOS"], ["Van", "Veiculo02"], ["Pistola", "Metralhadora", "Pulse", "Cerra"], ["P.E.M", "Reparo Rapido", "Balas de Titanio"] ];
 texto_lista     = "LISTA"; // :D 
@@ -105,6 +105,29 @@ textos_descricao_fases = [ // numero de descrições igual a numero de fase | se
     "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao3", 
     "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao4", 
     "descricao descricao descricao descricao descricao descricao descricao descricao descricao descricao5"
+]*/
+
+botoes_main     = ["PLAY", "VEHICLE", "OPTIONS", "CREDITS", "EXIT"];
+botoes_jogar    = ["RETURN", "START"];
+botoes_veiculo  = [ ["VEHICLE", "WEAPONRY", "EQUIPMENT"], ["Van"/*, "Coming Soon"*/], ["Pistol", "Machine Gun", "Pulse", "Saw"], ["P.E.M", "Quick Fix", "Titanium Bullets"] ];
+texto_lista     = "LIST"; // :D 
+botao_voltar    = "RETURN";
+textos_creditos = " -Programming-\nLeonardo Cordeiro (ReiMagnus)\nPaulo Vilalta (Xlender)\n\n" + 
+                  "-Art-\nPaulo Vilalta (Xlender)\n\n" + 
+                  "-Music and Sound Effects-\nLeonardo Cordeiro (ReiMagnus)\n\n" +
+                  "-Documentation-\nLeonardo Cordeiro (ReiMagnus)\nPaulo Vilalta (Xlender)\n\n" +
+                  "Game created for Brackeys Game Jam 2025.1";
+texto_estatisticas = string(
+    "Time:   {0}\nMoney earnt:   {1}\nMissions played:   {2}\nEnemies killed:   {3}", 
+    global.info_estatisticas.tempo, global.info_estatisticas.dinhe, global.info_estatisticas.jogos, global.info_estatisticas.inimi
+);
+texto_nome_fase = "Mission "; // :D 2
+textos_descricao_fases = [ // numero de descrições igual a numero de fase | se não buga
+    "They commanded me to go east. The cargo is hidden, still, they said the trip would be tumultous.",
+    "I don't think they know about the cargo. The road is still long.",
+    "I expected weaker machines. I'm not being paid enough for this.", 
+    "If the numbers keep increasing, I don't think my vehicle alone is gonna hold up.", 
+    "I'm close. When the cargo is safe I'm going to ask for a bigger check."
 ]
 
 

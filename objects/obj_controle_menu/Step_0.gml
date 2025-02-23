@@ -14,3 +14,5 @@ repeat(ds_map_size(background_map)){
 
 // camera do menu tem viewport ou sla
 layer_x("Background_5", _cx)
+
+show_debug_message(global.info_estatisticas)
