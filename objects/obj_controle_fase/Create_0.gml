@@ -1,6 +1,8 @@
 
 randomize()
 
+play_music();
+
 // Paramentros da fase ------------
 inimigos		= global.info_init_fase.inimigos;
 temp_spawn		= global.info_init_fase.temp_spawn;

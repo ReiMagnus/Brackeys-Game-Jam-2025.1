@@ -144,6 +144,7 @@ if(pause && temp_fase != 0 && !gameOver) { // HUD com o jogo pausado
                     case 0 : 
                         global.musica = global.musica == true ? false : true;
                         if(global.musica) {play_sfx(sfx_menu_alt_1);} else {play_sfx(sfx_menu_alt_0);}
+                        play_music();
                     break; // Musíca
                     case 1 : 
                         global.sons = global.sons == true ? false : true;

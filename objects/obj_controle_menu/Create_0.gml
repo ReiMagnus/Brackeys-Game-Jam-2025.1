@@ -1,3 +1,4 @@
+
 // parallax
 // vel de cada parte
 background_map = ds_map_create();
@@ -10,7 +11,10 @@ background_map[? layer_get_id("Background_4")] = -0.2;
 
 global.escala_janela = 2; // 1 = 640x360
 global.musica = true;
+global.musica_atual = noone;
 global.sons = true;
+
+play_music();
 
 enum abas_menu {
     main,
@@ -23,6 +27,8 @@ menu_atual = abas_menu.main;
 selecao = pointer_null
 clickTime = 0 // doubleclick
 aba_veiculo = 0; // Selecao para qual aba do menu veiculo o player esta
+
+
 
 if (!variable_global_exists("dinheiro")){
 	global.dinheiro = 9000;
@@ -89,7 +95,7 @@ textos_creditos = " -Programacao-\nLeonardo Cordeiro (ReiMagnus)\nPaulo Vilalta 
                   "-Documento-\nLeonardo Cordeiro (ReiMagnus)\nPaulo Vilalta (Xlender)\n\n" +
                   "Jogo criado para o Brackeys Game Jam 2025.1";
 texto_estatisticas = string(
-    "Temmpo: {0}\nDinheiro ganho: {1}\nVezes jogadas: {2}\nInimigos mortos: {3}", 
+    "Tempo: {0}\nDinheiro ganho: {1}\nZZZZZZZZzzzzzz: {2}\nInimigos mortos: {3}", 
     global.info_estatisticas.tempo, global.info_estatisticas.dinhe, global.info_estatisticas.jogos, global.info_estatisticas.inimi
 );
 texto_nome_fase = "Fase "; // :D 2

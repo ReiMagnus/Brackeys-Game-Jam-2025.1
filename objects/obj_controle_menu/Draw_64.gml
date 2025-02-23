@@ -16,7 +16,7 @@ switch(menu_atual) {
         // Congiguração do texto da tela
         draw_set_halign(fa_left);
         draw_set_valign(fa_middle);
-        draw_set_font(fnt_BotoesMenu); // Fonte Botões Menu ///Pode mudar para uma fonte personalizada depois
+        draw_set_font(global.fnt_texto_hud); // Fonte Botões Menu ///Pode mudar para uma fonte personalizada depois
         
         draw_text_transformed(40, _hgui*0.20, "NOME DO JOGO", 6, 6, 0); // Futuramente isso será o sprite
         
@@ -88,7 +88,7 @@ switch(menu_atual) {
             //var _selecao = i == selecao ? 1 : 0;
 
 			draw_set_halign(fa_center);
-            draw_set_font(fnt_BotoesMenu);
+            draw_set_font(global.fnt_texto_hud);
 			
             #region Desenahando os botões na tela -------------------------------
             // draw_rectangle(x1, y1, x2, y2, 1); // desenhando a colisão do botão
@@ -121,7 +121,7 @@ switch(menu_atual) {
             
             
         draw_set_valign(fa_bottom);
-        draw_set_font(fnt_BotoesMenu); // Fonte Botões Menu ///Pode mudar para uma fonte personalizada depois
+        draw_set_font(global.fnt_texto_hud); // Fonte Botões Menu ///Pode mudar para uma fonte personalizada depois
             
         for(var i = 0; i < array_length(botoes_jogar); i++) { // Botões do menu
             
@@ -201,7 +201,7 @@ switch(menu_atual) {
         
         draw_sprite_ext(spr_MenuVeiculo, 0, 0, 0, global.escala_janela, global.escala_janela, 0, c_white, 1);
         
-        draw_set_font(fnt_TextosHUD);
+        draw_set_font(global.fnt_texto_hud);
         
         var xx, yy, x1, y1, x2, y2;
         
@@ -289,7 +289,7 @@ switch(menu_atual) {
         
         #region Botao VOLTAR ---
         draw_set_halign(fa_left);
-        draw_set_font(fnt_BotoesMenu);
+        draw_set_font(global.fnt_texto_hud);
         var _wstr = string_width(botao_voltar) * global.escala_janela;
         var _hstr = string_height(botao_voltar) * global.escala_janela;
         
@@ -311,7 +311,7 @@ switch(menu_atual) {
         // Abas -----------------------------------------------------
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
-        draw_set_font(fnt_TextosHUD);
+        draw_set_font(global.fnt_texto_hud);
         
         for(var i = 0; i < array_length(botoes_veiculo[0]); i++) {
             
@@ -492,6 +492,7 @@ switch(menu_atual) {
                         case 0 : 
                             global.musica = global.musica == true ? false : true;
                             if(global.musica) {play_sfx(sfx_menu_alt_1);} else {play_sfx(sfx_menu_alt_0);}
+                            play_music();
                         break; // Musíca
                         case 1 : 
                             global.sons = global.sons == true ? false : true;
@@ -513,6 +514,7 @@ switch(menu_atual) {
         }
         
         #region Estatisticas 
+        draw_set_font(global.fnt_texto_hud);
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
         
@@ -523,7 +525,7 @@ switch(menu_atual) {
         #endregion
         
         #region Botao VOLTAR
-        draw_set_font(fnt_BotoesMenu);
+        draw_set_font(global.fnt_texto_hud);
         var _wstr = string_width(botao_voltar) * global.escala_janela;
         var _hstr = string_height(botao_voltar) * global.escala_janela;
         
@@ -549,6 +551,7 @@ switch(menu_atual) {
         
         draw_set_halign(fa_center);
         draw_set_valign(fa_middle);
+        draw_set_font(global.fnt_texto_hud);
         
         var xx, yy, x1, y1, x2, y2;
         
@@ -558,7 +561,7 @@ switch(menu_atual) {
         draw_text_transformed(xx, yy, textos_creditos, global.escala_janela, global.escala_janela, 0);
         
         #region Botao VOLTAR
-        draw_set_font(fnt_BotoesMenu);
+        draw_set_font(global.fnt_texto_hud);
         var _wstr = string_width(botao_voltar) * global.escala_janela;
         var _hstr = string_height(botao_voltar) * global.escala_janela;
         

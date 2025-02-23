@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":0.084036,
+  "duration":0.189365,
   "name":"sfx_menu_alt_0",
   "parent":{
     "name":"SFX",
