@@ -154,7 +154,7 @@ switch(menu_atual) {
                                case 1:
                                global.info_init_fase.inimigos = [-1, -1, -1, -1, 100]
                                global.info_init_fase.temp_spawn = [0, 60]
-                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*60 // 10 sec
+                               global.info_init_fase.temp_fase = game_get_speed(gamespeed_fps)*1 // 10 sec
                                break;
                                
                                case 2:

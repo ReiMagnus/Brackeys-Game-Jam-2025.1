@@ -16,7 +16,7 @@ if (room = rm_Fase){
 			draw_set_valign(fa_middle);
 			draw_set_font(fnt_BotoesMenu);
 	
-			draw_text_color(_wgui/2, 16, temp_fase/60, c_black,  c_black,  c_black,  c_black, 1)
+			//draw_text_color(_wgui/2, 16, temp_fase/60, c_black,  c_black,  c_black,  c_black, 1)
 	
 			draw_set_halign(-1);
 			draw_set_valign(-1);
@@ -26,6 +26,10 @@ if (room = rm_Fase){
 			draw_set_valign(fa_top);
 			
 			if (veiculo_equip != -1){ draw_sprite_ext(spr_equips_outlined, veiculo_equip, _wgui-32, _hgui-32, 1, 1, 0, c_white, 1) }
+			
+			draw_set_color($45993D)
+			draw_rectangle(0,0,_wgui-((temp_fase*_wgui)/temp_fase_total),6, false)
+			draw_set_color(c_white)
 		}
 	}
 	else{
@@ -57,7 +61,7 @@ if (room = rm_Fase){
 		
 		// info do nivel
 		for (var i = 0; i < 3; i++){
-			draw_sprite(spr_icons,i,_wgui/2-86,_hgui/2-48+(34*i))
+			draw_sprite(spr_icons_stats,i,_wgui/2-86,_hgui/2-48+(34*i))
 			if (i == 0){
 				var temp = temp_fase_total/60
 				draw_text_color(_wgui/2-86+38,_hgui/2-48+14+(34*i), string(temp) + " sec" , c_white,  c_white,  c_white,  c_white, 1)
@@ -85,6 +89,7 @@ if (room = rm_Fase){
 		// botão menu
 		if(point_in_rectangle(_mx, _my, _wgui/2-(menu_width/2), _hgui/2+70,_wgui/2-(menu_width/2)+menu_width, _hgui/2+70+menu_height)){
 			if(mouse_check_button_released(mb_left)){
+				play_sfx(sfx_menu_simples);
 				global.info_estatisticas.tempo += temp_fase_total
 				global.info_estatisticas.dinhe += global.dinhe_total
 				global.info_estatisticas.inimi += global.inimigo_total
@@ -136,9 +141,15 @@ if(pause && temp_fase != 0 && !gameOver) { // HUD com o jogo pausado
         if(point_in_rectangle(_mx, _my, x1, y1, x2, y2)) {
             if(mouse_check_button_released(mb_left)) {
                 switch(i) {
-                    case 0 : global.musica = global.musica == true ? false : true; break; // Musíca
-                    case 1 : global.sons = global.sons == true ? false : true; break; // Som
-                    case 2 : global.menu = room_goto(rm_Menu); break; // Retornar ao menu
+                    case 0 : 
+                        global.musica = global.musica == true ? false : true;
+                        if(global.musica) {play_sfx(sfx_menu_alt_1);} else {play_sfx(sfx_menu_alt_0);}
+                    break; // Musíca
+                    case 1 : 
+                        global.sons = global.sons == true ? false : true;
+                        if(global.sons) {play_sfx(sfx_menu_alt_1);} else {play_sfx(sfx_menu_alt_0);}
+                    break; // Som
+                    case 2 : global.menu = room_goto(rm_Menu); play_sfx(sfx_menu_simples); break; // Retornar ao menu
                 }
             }
         }
@@ -176,6 +187,7 @@ if (gameOver == 1){
 	// botão menu
 	if(point_in_rectangle(_mx, _my, _wgui/2-(menu_width/2), _hgui/2+35,_wgui/2-(menu_width/2)+menu_width, _hgui/2+35+menu_height)){
 		if(mouse_check_button_released(mb_left)){
+			play_sfx(sfx_menu_simples);
 			global.info_estatisticas.tempo += temp_fase_total
 			global.info_estatisticas.dinhe += global.dinhe_total
 			global.info_estatisticas.inimi += global.inimigo_total
@@ -192,9 +204,9 @@ if (gameOver == 1){
 	draw_set_color(c_white)
 	draw_text(_wgui/2,_hgui/2+45, "MENU")
 		
-		draw_set_halign(-1);
-		draw_set_valign(-1);
-		draw_set_font(-1);
-		draw_set_color(c_white)	
+	draw_set_halign(-1);
+	draw_set_valign(-1);
+	draw_set_font(-1);
+	draw_set_color(c_white)	
 		
 }
